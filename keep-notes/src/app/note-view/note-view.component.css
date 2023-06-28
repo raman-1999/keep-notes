@@ -1,0 +1,31 @@
+div{
+    width: 80%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 3rem;
+    margin-top: 3rem;
+}
+button{
+    width: 40px;
+    border-radius: 50%;
+    animation: bounce 1s 1s infinite ;
+}
+
+#add{
+    position: fixed;
+    left: 95%;
+    bottom: 1rem;
+    animation: appear 1s 1;
+}
+
+@keyframes appear {
+    from {transform: translateY(-200%);}
+    to {transform: translateY(0);}
+}
+
+@keyframes bounce {
+    0% {transform: scale(1);}
+    50% {transform: scale(1.2);}
+    100% {transform: scale(1);}
+}

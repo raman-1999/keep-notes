@@ -1,0 +1,13 @@
+<app-add-note *ngIf="isDisplayed" (noteChanged)="onNoteAdded($event)"></app-add-note>
+<app-search (searchedNote)="onNoteSearched($event)"></app-search>
+<div>
+    <app-note *ngFor="let note of notes" [note]="note"></app-note>
+</div>
+<div *ngIf="isShown">
+    <div id="add">
+        <button mat-mini-fab color="accent" aria-label="Example icon button with a menu icon" (click)="add()">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+</div>
+

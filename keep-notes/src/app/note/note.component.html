@@ -1,0 +1,20 @@
+<div class="note" (mouseenter)="hover()" (mouseleave)="unhover()">
+    <img src="../../assets/pushpin-png-27716.png" alt="">
+    <mat-card>
+        <mat-card-header>
+            <h4>{{note?.title}}</h4>
+        </mat-card-header>
+        <mat-card-content>
+            <p>{{note?.content}}</p>
+        </mat-card-content>
+        <!-- *ngIf="isHovered" -->
+        <mat-card-actions>
+            <ul class="options">
+                <li><a routerLink="/note-details/{{note?.id}}"><mat-icon id="animate" color="accent"
+                            style="cursor: pointer;">create</mat-icon></a></li>
+                <li><mat-icon color="primary">turned_in</mat-icon></li>
+                <li><mat-icon color="primary">notifications</mat-icon></li>
+            </ul>
+        </mat-card-actions>
+    </mat-card>
+</div>

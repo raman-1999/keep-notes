@@ -1,0 +1,60 @@
+<!-- <div id="add">
+    <h2>Add note</h2>
+    <div id="inputs">
+        <input type="text" placeholder="Note Title" [(ngModel)]="note.title"><br>
+        <textarea name="" id="" cols="30" rows="3" placeholder="Note Content" [(ngModel)]="note.content"></textarea><br>
+        <button (click)="addNote()">Add</button>
+    </div>
+</div> -->
+<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+        <mat-panel-title style="font-size: 1.3rem;">
+            New Note
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <form (ngSubmit)="onSubmit(form)" #form="ngForm" novalidate>
+
+        <mat-form-field appearance="outline">
+            <input matInput type="text" name="title" placeholder="Note Title *" [(ngModel)]="note.title"
+                #title="ngModel" minlength="3" required>
+        </mat-form-field>
+        <div *ngIf="title.touched">
+            <div *ngIf="title.errors?.['required']" class="error">
+                Note Title is required
+            </div>
+            <div *ngIf="title.errors?.['minlength']" class="error">
+                Note Title minimum length is 3
+            </div>
+        </div>
+
+        <mat-form-field appearance="outline">
+            <textarea matInput name="content" placeholder="Note Content *" [(ngModel)]="note.content" #content="ngModel"
+                minlength="10" cols="10" required></textarea>
+        </mat-form-field>
+        <div *ngIf="content.touched">
+            <div *ngIf="content.errors?.['required']" class="error">
+                Note Content is required
+            </div>
+            <div *ngIf="content.errors?.['minlength']" class="error">
+                Note Content should have a minimum of 10 characters
+            </div>
+        </div>
+
+        <button mat-mini-fab color="primary" type="submit"
+            (click)="addNote(form);openSnackBar(message.value, action.value)" [disabled]="form.invalid">
+            <mat-icon>save</mat-icon>
+        </button>
+
+        <div id="snackBar">
+            <mat-form-field>
+                <mat-label>Message</mat-label>
+                <input matInput value="Note addded successfully" #message>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Action</mat-label>
+                <input matInput value="OK" #action>
+            </mat-form-field>
+        </div>
+    </form>
+</mat-expansion-panel>

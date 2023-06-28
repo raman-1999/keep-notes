@@ -1,0 +1,10 @@
+<mat-toolbar color="primary">
+    <span>Keep Notes</span>
+    <ul>
+        <mat-icon *ngIf="!status" class="icon">person</mat-icon>
+        <mat-icon *ngIf="status" class="icon" routerLink="/home">apps</mat-icon>
+        <mat-icon *ngIf="status" class="icon" (click)="logout()">logout</mat-icon>
+        <mat-icon *ngIf="status" class="icon" color="accent">how_to_reg</mat-icon>
+    </ul>
+</mat-toolbar>
+<router-outlet></router-outlet>
